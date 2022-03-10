@@ -2,7 +2,10 @@ package com.company;
 
 public class Main {
 
+    static StartPage startPage;
+
     public static void main(String[] args) {
-	// write your code here
+        startPage = new StartPage();
+	    System.out.println("Hello World");
     }
 }

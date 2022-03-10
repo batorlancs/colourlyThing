@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.*;
 import java.awt.geom.*;
 import javax.imageio.*;
@@ -40,6 +41,13 @@ public class Picture extends ImageIcon
     public String getFilename()
     {
         return filename;
+    }
+
+    //resizing image to a given percent
+    public void resizeImage(int percent) {
+        Image helper = this.getImage();
+        Image modified = helper.getScaledInstance(this.getIconWidth() / 100 * percent, this.getIconHeight() / 100 * percent, Image.SCALE_SMOOTH);
+        this.setImage(modified);
     }
 
 }

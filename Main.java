@@ -6,6 +6,5 @@ public class Main {
 
     public static void main(String[] args) {
         startPage = new StartPage();
-	    System.out.println("Hello World");
     }
 }

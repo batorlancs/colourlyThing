@@ -43,11 +43,17 @@ public class Picture extends ImageIcon
         return filename;
     }
 
-    //resizing image to a given percent
+    // RESIZING IMAGE TO THE GIVEN PERCENT
     public void resizeImage(int percent) {
-        Image helper = this.getImage();
-        Image modified = helper.getScaledInstance(this.getIconWidth() / 100 * percent, this.getIconHeight() / 100 * percent, Image.SCALE_SMOOTH);
-        this.setImage(modified);
+        try {
+            Image helper = this.getImage();
+            Image modified = helper.getScaledInstance(this.getIconWidth() / 100 * percent, this.getIconHeight() / 100 * percent, Image.SCALE_SMOOTH);
+            this.setImage(modified);
+        } catch (Exception e) {
+            System.out.println("Image does not exist");
+            return;
+        }
+
     }
 
 }

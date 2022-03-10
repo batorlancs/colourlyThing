@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class StartPage extends JFrame implements ActionListener {
+public class StartPage extends JFrame implements ActionListener, MouseListener {
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -48,11 +48,28 @@ public class StartPage extends JFrame implements ActionListener {
 
     // DESIGN
     private Picture picLogo = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-2.png");
+    // FOR LINUX:
+    // private Picture picLogo = new Picture("Untitled-2.png");
     private JLabel labelLogo = new JLabel();
     private Picture backPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
+    // FOR LINUX:
+    //private Picture picLogo = new Picture("Untitled-3.png");
     private JLabel labelBack = new JLabel();
     private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-4.png");
+    // FOR LINUX:
+    //private Picture picLogo = new Picture("Untitled-4.png");
     private JButton buttonStart = new JButton();
+    private Picture buttonBorder = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-5.png");
+    // FOR LINUX:
+    //private Picture picLogo = new Picture("Untitled-5.png");
+    private Picture startButt1 = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-6.png");
+    // FOR LINUX:
+    //private Picture picLogo = new Picture("Untitled-6.png");
+    private JLabel labelStart1 = new JLabel();
+    private JLabel labelStart2 = new JLabel();
+    private Picture startButtAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
+    // FOR LINUX:
+    //private Picture picLogo = new Picture("Untitled-7.png");
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -90,6 +107,7 @@ public class StartPage extends JFrame implements ActionListener {
         label1.setForeground(plainTextColor);
 
         // CREATING THE BUTTONS
+        buttonBorder.resizeImage(3);
         createDiffButton(button4, 50, 150);
         button4.setForeground(color4);
         createDiffButton(button5, 130, 150);
@@ -138,11 +156,24 @@ public class StartPage extends JFrame implements ActionListener {
 
         // START BUTTON
         startPic.resizeImage(8);
+        startButtAnim.resizeImage(8);
         buttonStart.setBounds(100, 360, 300, 100);
         buttonStart.addActionListener(this);
+        buttonStart.addMouseListener(this);
+        buttonStart.setOpaque(false);
+        buttonStart.setContentAreaFilled(false);
         buttonStart.setBorderPainted(false);
         buttonStart.setIcon(startPic);
         buttonStart.setFocusPainted(true);
+
+        startButt1.resizeImage(1);
+        labelStart1.setBounds(143, 360, 100, 100);
+        labelStart2.setBounds(345, 360, 100, 100);
+        labelStart1.setIcon(startButt1);
+        labelStart2.setIcon(startButt1);
+        labelStart1.setVisible(false);
+        labelStart2.setVisible(false);
+
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // ADDING TO PANEL
@@ -154,7 +185,10 @@ public class StartPage extends JFrame implements ActionListener {
         panel.add(button4); panel.add(button5); panel.add(button6); panel.add(button7); panel.add(button8);
         panel.add(button14); panel.add(button15); panel.add(button16); panel.add(button17); panel.add(button18);
         panel.add(buttonStart);
+        panel.add(labelStart1);
+        panel.add(labelStart2);
         panel.add(labelBack);
+
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // ADDING TO FRAME
@@ -177,9 +211,15 @@ public class StartPage extends JFrame implements ActionListener {
     //  HELPS TO CREATE BUTTON
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private void createDiffButton(JButton button, int x, int y) {
+        JLabel labelnew = new JLabel(buttonBorder);
         button.setBounds(x, y, 80, 80);
+        button.setLayout(new BorderLayout());
+        button.add(labelnew, BorderLayout.CENTER);
+        //button.setIcon(buttonBorder);
         button.setForeground(plainTextColor);
         button.addActionListener(this);
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         button.setFont(font1);
     }
@@ -280,5 +320,38 @@ public class StartPage extends JFrame implements ActionListener {
         }
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        if (e.getSource() == buttonStart) {
+            labelStart1.setVisible(true);
+            labelStart2.setVisible(true);
+            buttonStart.setIcon(startButtAnim);
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        if (e.getSource() == buttonStart) {
+            labelStart1.setVisible(false);
+            labelStart2.setVisible(false);
+            buttonStart.setIcon(startPic);
+        }
     }
 }

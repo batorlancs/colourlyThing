@@ -15,7 +15,7 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private JPanel panel = new JPanel();
     private JLabel label1 = new JLabel("choose colour code length");
     private JLabel label2 = new JLabel("normal");
-    private JLabel label3 = new JLabel("choose number of guesses");
+    private JLabel label3 = new JLabel("choose the number of guesses");
 
     // DIFFERENT FONTS
     private Font font1 = new Font("Calibri", Font.BOLD, 15);
@@ -24,6 +24,9 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
 
     // COLOR OF SAMPLE TEXT
     private Color plainTextColor = new Color(180, 180, 180);
+    private Color plainTextColorAnim = new Color(240, 240, 240);
+    private Color plainTextColorAnim2 = new Color(120, 120, 120);
+
 
     // COLORS FOR THE BUTTONS (DIFFICULTY)
     private Color color4 = new Color(152, 222, 124);
@@ -46,6 +49,13 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private JButton button17 = new JButton("7");
     private JButton button18 = new JButton("8");
 
+    // TIME LIMIT
+    private JButton buttonLimit = new JButton("- set maximum time limit -");
+    private JLabel labelTime = new JLabel("2:00");
+    private JButton buttonTimeDown = new JButton();
+    private JButton buttonTimeUp = new JButton();
+    private int time = 120;
+
     // DESIGN
     private Picture picLogo = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-2.png");
     // FOR LINUX:
@@ -55,7 +65,7 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     // FOR LINUX:
     //private Picture picLogo = new Picture("Untitled-3.png");
     private JLabel labelBack = new JLabel();
-    private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-4.png");
+    private Picture startButtAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-4.png");
     // FOR LINUX:
     //private Picture picLogo = new Picture("Untitled-4.png");
     private JButton buttonStart = new JButton();
@@ -67,9 +77,18 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     //private Picture picLogo = new Picture("Untitled-6.png");
     private JLabel labelStart1 = new JLabel();
     private JLabel labelStart2 = new JLabel();
-    private Picture startButtAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
+    private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
     // FOR LINUX:
     //private Picture picLogo = new Picture("Untitled-7.png");
+
+    private Picture picTimeUp = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-8.png");
+    //private Picture picLogo = new Picture("Untitled-8.png");
+    private Picture picTimeUpAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-9.png");
+    //private Picture picLogo = new Picture("Untitled-9.png");
+    private Picture picTimeDown = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-10.png");
+    //private Picture picLogo = new Picture("Untitled-10.png");
+    private Picture picTimeDownAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-11.png");
+    //private Picture picLogo = new Picture("Untitled-11.png");
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -132,9 +151,59 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         createDiffButton(button14, 370, 230);
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        // SET THE TIMER SETUP
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        JLabel labelnew2 = new JLabel(buttonBorder);
+        labelTime.setBounds(210, 310, 80, 80);
+        labelTime.setLayout(new BorderLayout());
+        labelTime.add(labelnew2, BorderLayout.CENTER);
+        labelTime.setHorizontalAlignment(JLabel.CENTER);
+        labelTime.setFont(font1);
+        labelTime.setForeground(plainTextColor);
+        labelTime.setVisible(false);
+        //labelTime.setIcon(buttonBorder);
+
+        buttonLimit.setBounds(100, 300, 300, 30);
+        buttonLimit.setOpaque(false);
+        buttonLimit.addActionListener(this);
+        buttonLimit.addMouseListener(this);
+        buttonLimit.setOpaque(false);
+        buttonLimit.setContentAreaFilled(false);
+        buttonLimit.setBorderPainted(false);
+        buttonLimit.setFont(font1);
+        buttonLimit.setForeground(plainTextColorAnim2);
+        buttonLimit.setHorizontalAlignment(JLabel.CENTER);
+        
+        picTimeDown.resizeImage(2);
+        picTimeDownAnim.resizeImage(2);
+        buttonTimeDown.setBounds(190, 335, 30, 30);
+        buttonTimeDown.setOpaque(false);
+        buttonTimeDown.addActionListener(this);
+        buttonTimeDown.addMouseListener(this);
+        buttonTimeDown.setOpaque(false);
+        buttonTimeDown.setContentAreaFilled(false);
+        buttonTimeDown.setBorderPainted(false);
+        buttonTimeDown.setIcon(picTimeDown);
+        buttonTimeDown.setVisible(false);
+        buttonTimeDown.setEnabled(false);
+
+        picTimeUp.resizeImage(2);
+        picTimeUpAnim.resizeImage(2);
+        buttonTimeUp.setBounds(280, 335, 30, 30);
+        buttonTimeUp.setOpaque(false);
+        buttonTimeUp.addActionListener(this);
+        buttonTimeUp.addMouseListener(this);
+        buttonTimeUp.setOpaque(false);
+        buttonTimeUp.setContentAreaFilled(false);
+        buttonTimeUp.setBorderPainted(false);
+        buttonTimeUp.setIcon(picTimeUp);
+        buttonTimeUp.setVisible(false);
+        buttonTimeUp.setEnabled(false);
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // CALCULATED DIFFICULTY LABEL
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        label2.setBounds(50, 310, 400, 50);
+        label2.setBounds(50, 415, 400, 50);
         label2.setHorizontalAlignment(JLabel.CENTER);
         label2.setFont(font1);
         label2.setForeground(color5);
@@ -157,7 +226,7 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         // START BUTTON
         startPic.resizeImage(8);
         startButtAnim.resizeImage(8);
-        buttonStart.setBounds(100, 360, 300, 100);
+        buttonStart.setBounds(100, 385, 300, 50);
         buttonStart.addActionListener(this);
         buttonStart.addMouseListener(this);
         buttonStart.setOpaque(false);
@@ -182,11 +251,17 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         panel.add(label2);
         panel.add(label3);
         panel.add(labelLogo);
+        panel.add(labelTime);
+        panel.add(buttonLimit);
+        panel.add(buttonTimeDown);
+        panel.add(buttonTimeUp);
         panel.add(button4); panel.add(button5); panel.add(button6); panel.add(button7); panel.add(button8);
         panel.add(button14); panel.add(button15); panel.add(button16); panel.add(button17); panel.add(button18);
         panel.add(buttonStart);
         panel.add(labelStart1);
         panel.add(labelStart2);
+
+        //THIS HAS TO BE LAST (LAYERING)
         panel.add(labelBack);
 
 
@@ -218,6 +293,7 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         //button.setIcon(buttonBorder);
         button.setForeground(plainTextColor);
         button.addActionListener(this);
+        button.addMouseListener(this);
         button.setOpaque(false);
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
@@ -228,13 +304,13 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     // RETURNS THE BUTTON WHICH IS CURRENTLY COLOURED, TAKES IN BUTTONS AS INPUT
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private JButton getDiffButtonEnabled(JButton button4, JButton button5, JButton button6, JButton button7, JButton button8) {
-        if (button4.getForeground() != plainTextColor)
+        if (button4.getForeground() != plainTextColor && button4.getForeground() != plainTextColorAnim)
             return button4;
-        if (button5.getForeground() != plainTextColor)
+        if (button5.getForeground() != plainTextColor && button5.getForeground() != plainTextColorAnim)
             return button5;
-        if (button6.getForeground() != plainTextColor)
+        if (button6.getForeground() != plainTextColor && button6.getForeground() != plainTextColorAnim)
             return button6;
-        if (button7.getForeground() != plainTextColor)
+        if (button7.getForeground() != plainTextColor && button7.getForeground() != plainTextColorAnim)
             return button7;
         return button8;
     }
@@ -268,6 +344,19 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             case 9: label2.setText("heroic"); label2.setForeground(color7); break;
             case 10: label2.setText("legendary"); label2.setForeground(color8); break;
         }
+    }
+
+    private String convertToTime(int num) {
+        StringBuilder s = new StringBuilder("");
+        int o = 0;
+        int p = 0;
+        p = num % 60;
+        o = num / 60;
+        s.append(Integer.toString(o));
+        s.append(":");
+        if (p<10) s.append("0");
+        s.append(Integer.toString(p));
+        return s.toString();
     }
 
     @Override
@@ -311,12 +400,53 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
                 button18.setForeground(color4);
         }
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        // SETTING TIMER
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        if (e.getSource() == buttonLimit) {
+            if (labelTime.isVisible()) {
+                buttonLimit.setText("- set maximum time limit -");
+                buttonLimit.setForeground(plainTextColorAnim2);
+                labelTime.setVisible(false);
+                buttonTimeUp.setVisible(false);
+                buttonTimeUp.setEnabled(false);
+                buttonTimeDown.setVisible(false);
+                buttonTimeDown.setEnabled(false);
+            }
+            else {
+                buttonLimit.setText("set maximum time limit");
+                buttonLimit.setForeground(plainTextColor);
+                labelTime.setVisible(true);
+                buttonTimeUp.setVisible(true);
+                buttonTimeUp.setEnabled(true);
+                buttonTimeDown.setVisible(true);
+                buttonTimeDown.setEnabled(true);
+            }
+
+        }
+
+        if (e.getSource() == buttonTimeDown) {
+            if (time >= 45) {
+                time -= 15;
+            }
+            labelTime.setText(convertToTime(time));
+        }
+
+        if (e.getSource() == buttonTimeUp) {
+            if (time <= 285) {
+                time += 15;
+            }
+            labelTime.setText(convertToTime(time));
+        }
+
+        // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // SETS THE DIFFICULTY LABEL TO THE CORRECT COLOUR AND TEXT AFTER CALCULATION
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         calculateDiff();
 
         if (e.getSource() == buttonStart) {
             // OPEN NEW FRAME FOR THE GAME
+            this.dispose();
         }
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -344,6 +474,40 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             labelStart2.setVisible(true);
             buttonStart.setIcon(startButtAnim);
         }
+
+        if (e.getSource() == buttonLimit) {
+            if (labelTime.isVisible()) buttonLimit.setForeground(plainTextColorAnim2);
+            else buttonLimit.setForeground(plainTextColor);
+        }
+
+        if (e.getSource() == buttonTimeDown) {
+            buttonTimeDown.setIcon(picTimeDownAnim);
+        }
+        if (e.getSource() == buttonTimeUp) {
+            buttonTimeUp.setIcon(picTimeUpAnim);
+        }
+
+        if (e.getSource() == button4 && button4.getForeground() == plainTextColor)
+            button4.setForeground(plainTextColorAnim);
+        if (e.getSource() == button5 && button5.getForeground() == plainTextColor)
+            button5.setForeground(plainTextColorAnim);
+        if (e.getSource() == button6 && button6.getForeground() == plainTextColor)
+            button6.setForeground(plainTextColorAnim);
+        if (e.getSource() == button7 && button7.getForeground() == plainTextColor)
+            button7.setForeground(plainTextColorAnim);
+        if (e.getSource() == button8 && button8.getForeground() == plainTextColor)
+            button8.setForeground(plainTextColorAnim);
+        if (e.getSource() == button14 && button14.getForeground() == plainTextColor)
+            button14.setForeground(plainTextColorAnim);
+        if (e.getSource() == button15 && button15.getForeground() == plainTextColor)
+            button15.setForeground(plainTextColorAnim);
+        if (e.getSource() == button16 && button16.getForeground() == plainTextColor)
+            button16.setForeground(plainTextColorAnim);
+        if (e.getSource() == button17 && button17.getForeground() == plainTextColor)
+            button17.setForeground(plainTextColorAnim);
+        if (e.getSource() == button18 && button18.getForeground() == plainTextColor)
+            button18.setForeground(plainTextColorAnim);
+        
     }
 
     @Override
@@ -353,5 +517,39 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             labelStart2.setVisible(false);
             buttonStart.setIcon(startPic);
         }
+
+        if (e.getSource() == buttonLimit) {
+            if (labelTime.isVisible()) buttonLimit.setForeground(plainTextColor);
+            else buttonLimit.setForeground(plainTextColorAnim2);
+        }
+
+        if (e.getSource() == buttonTimeDown) {
+            buttonTimeDown.setIcon(picTimeDown);
+
+        }
+        if (e.getSource() == buttonTimeUp) {
+            buttonTimeUp.setIcon(picTimeUp);
+        }
+
+        if (e.getSource() == button4 && button4.getForeground() == plainTextColorAnim)
+            button4.setForeground(plainTextColor);
+        if (e.getSource() == button5 && button5.getForeground() == plainTextColorAnim)
+            button5.setForeground(plainTextColor);
+        if (e.getSource() == button6 && button6.getForeground() == plainTextColorAnim)
+            button6.setForeground(plainTextColor);
+        if (e.getSource() == button7 && button7.getForeground() == plainTextColorAnim)
+            button7.setForeground(plainTextColor);
+        if (e.getSource() == button8 && button8.getForeground() == plainTextColorAnim)
+            button8.setForeground(plainTextColor);
+        if (e.getSource() == button14 && button14.getForeground() == plainTextColorAnim)
+            button14.setForeground(plainTextColor);
+        if (e.getSource() == button15 && button15.getForeground() == plainTextColorAnim)
+            button15.setForeground(plainTextColor);
+        if (e.getSource() == button16 && button16.getForeground() == plainTextColorAnim)
+            button16.setForeground(plainTextColor);
+        if (e.getSource() == button17 && button17.getForeground() == plainTextColorAnim)
+            button17.setForeground(plainTextColor);
+        if (e.getSource() == button18 && button18.getForeground() == plainTextColorAnim)
+            button18.setForeground(plainTextColor);
     }
 }

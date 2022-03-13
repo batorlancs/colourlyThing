@@ -50,7 +50,7 @@ public class Picture extends ImageIcon
             Image modified = helper.getScaledInstance(this.getIconWidth() / 100 * percent, this.getIconHeight() / 100 * percent, Image.SCALE_SMOOTH);
             this.setImage(modified);
         } catch (Exception e) {
-            System.out.println("Image does not exist");
+            System.out.println("could not resize image");
             return;
         }
 

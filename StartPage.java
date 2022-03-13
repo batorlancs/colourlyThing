@@ -18,14 +18,15 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private JLabel label3 = new JLabel("choose the number of guesses");
 
     // DIFFERENT FONTS
-    private Font font1 = new Font("Calibri", Font.BOLD, 15);
-    private Font font2 = new Font("Calibri", Font.PLAIN, 15);
-    private Font font3 = new Font("Calibri", Font.BOLD, 20);
+    public static Font font1 = new Font("Calibri", Font.BOLD, 15);
+    public static Font font2 = new Font("Calibri", Font.PLAIN, 15);
+    public static Font font3 = new Font("Calibri", Font.BOLD, 20);
 
     // COLOR OF SAMPLE TEXT
-    private Color plainTextColor = new Color(180, 180, 180);
-    private Color plainTextColorAnim = new Color(240, 240, 240);
-    private Color plainTextColorAnim2 = new Color(120, 120, 120);
+    public static Color plainTextColor = new Color(180, 180, 180);
+    public static Color plainTextColorAnim = new Color(240, 240, 240);
+    public static Color plainTextColorAnim2 = new Color(120, 120, 120);
+    public static Color backGroundColor = new Color(64, 64, 64);
 
 
     // COLORS FOR THE BUTTONS (DIFFICULTY)
@@ -445,6 +446,10 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
 
         if (e.getSource() == buttonStart) {
             // OPEN NEW FRAME FOR THE GAME
+            int diff1 = Integer.valueOf(getDiffButtonEnabled(button4, button5, button6, button7, button8).getText());
+            int diff2 = Integer.valueOf(getDiffButtonEnabled(button14, button15, button16, button17, button18).getText());
+            if (!buttonLimit.isEnabled()) time = 0;
+            new GamePage(diff1, diff2, time);
             this.dispose();
         }
 

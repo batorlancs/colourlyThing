@@ -59,36 +59,35 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
 
     // DESIGN
     private Picture picLogo = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-2.png");
-    // private Picture picLogo = new Picture("Untitled-2.png");
-    private JLabel labelLogo = new JLabel();
-
     private Picture backPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
-    //private Picture backLogo = new Picture("Untitled-3.png");
-    private JLabel labelBack = new JLabel();
-
     private Picture startButtAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-4.png");
-    //private Picture startButtAnim = new Picture("Untitled-4.png");
-    private JButton buttonStart = new JButton();
-
     private Picture buttonBorder = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-5.png");
-    //private Picture buttonBorder = new Picture("Untitled-5.png");
-
     private Picture startButt1 = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-6.png");
-    //private Picture startButt1 = new Picture("Untitled-6.png");
+    private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
+    private Picture picTimeUp = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-8.png");
+    private Picture picTimeUpAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-9.png");
+    private Picture picTimeDown = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-10.png");
+    private Picture picTimeDownAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-11.png");
+
+    private JLabel labelLogo = new JLabel();
+    private JLabel labelBack = new JLabel();
+    private JButton buttonStart = new JButton();
     private JLabel labelStart1 = new JLabel();
     private JLabel labelStart2 = new JLabel();
 
-    private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
-    //private Picture startPic = new Picture("Untitled-7.png");
+    //********************************************************************************************************************************************************
+//    private Picture picLogo = new Picture("Untitled-2.png");
+//    private Picture backLogo = new Picture("Untitled-3.png");
+//    private Picture startButtAnim = new Picture("Untitled-4.png");
+//    private Picture buttonBorder = new Picture("Untitled-5.png");
+//    private Picture startButt1 = new Picture("Untitled-6.png");
+//    private Picture startPic = new Picture("Untitled-7.png");
+//    private Picture picTimeUp = new Picture("Untitled-8.png");
+//    private Picture picTimeUpAnim = new Picture("Untitled-9.png");
+//    private Picture picTimeDown = new Picture("Untitled-10.png");
+//    private Picture picTimeDownAnim = new Picture("Untitled-11.png");
+    //********************************************************************************************************************************************************
 
-    private Picture picTimeUp = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-8.png");
-    //private Picture picTimeUp = new Picture("Untitled-8.png");
-    private Picture picTimeUpAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-9.png");
-    //private Picture picTimeUpAnim = new Picture("Untitled-9.png");
-    private Picture picTimeDown = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-10.png");
-    //private Picture picTimeDown = new Picture("Untitled-10.png");
-    private Picture picTimeDownAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-11.png");
-    //private Picture picTimeDownAnim = new Picture("Untitled-11.png");
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------

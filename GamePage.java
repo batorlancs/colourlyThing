@@ -2,10 +2,13 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import static com.company.StartPage.backGroundColor;
-import static com.company.StartPage.plainTextColor;
+import static com.company.StartPage.path1;
 
 public class GamePage extends JFrame implements ActionListener, MouseListener{
 
@@ -25,17 +28,18 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     private Colours colours = new Colours();
 
     // PICTURES
-    private Picture picEmpty = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Empty.png");
-    private Picture picBackGround = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
     private Picture[] buttPictures = new Picture[7];
     private Picture[] buttAnimPictures = new Picture[7];
-    private Picture buttBack = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButt.png");
-    private Picture buttBackAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButtAnim.png");
     //********************************************************************************************************************************************************
-    //private Picture picBackGround = new Picture("Untitled-3.png");
-    //private Picture picEmpty = new Picture("Empty.png");
-    //private Picture buttBack = new Picture("backButt.png");
-    //private Picture buttBackAnim = new Picture("backButtAnim.png");
+//    private Picture picEmpty = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Empty.png");
+//    private Picture picBackGround = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
+//    private Picture buttBack = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButt.png");
+//    private Picture buttBackAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButtAnim.png");
+    //********************************************************************************************************************************************************
+    private Picture picBackGround = new Picture(path1 + "/Untitled-3.png");
+    private Picture picEmpty = new Picture(path1 + "/Empty.png");
+    private Picture buttBack = new Picture(path1 + "/backButt.png");
+    private Picture buttBackAnim = new Picture(path1 + "/backButtAnim.png");
     //********************************************************************************************************************************************************
 
 
@@ -81,21 +85,21 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
             buttonPanelBot.add(buttons[i]);
         }
 
-        buttPictures[0] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/RedButt.png");
-        buttPictures[1] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/OrangeButt.png");
-        buttPictures[2] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/YellowButt.png");
-        buttPictures[3] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/GreenButt.png");
-        buttPictures[4] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/BlueButt.png");
-        buttPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButt.png");
-        buttPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButt.png");
+//        buttPictures[0] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/RedButt.png");
+//        buttPictures[1] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/OrangeButt.png");
+//        buttPictures[2] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/YellowButt.png");
+//        buttPictures[3] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/GreenButt.png");
+//        buttPictures[4] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/BlueButt.png");
+//        buttPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButt.png");
+//        buttPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButt.png");
         //********************************************************************************************************************************************************
-//        buttPictures[0] = new Picture("RedButt.png");
-//        buttPictures[1] = new Picture("OrangeButt.png");
-//        buttPictures[2] = new Picture("YellowButt.png");
-//        buttPictures[3] = new Picture("GreenButt.png");
-//        buttPictures[4] = new Picture("BlueButt.png");
-//        buttPictures[5] = new Picture("IndigoButt.png");
-//        buttPictures[6] = new Picture("VioletButt.png");
+        buttPictures[0] = new Picture(path1 + "/RedButt.png");
+        buttPictures[1] = new Picture(path1 + "/OrangeButt.png");
+        buttPictures[2] = new Picture(path1 + "/YellowButt.png");
+        buttPictures[3] = new Picture(path1 + "/GreenButt.png");
+        buttPictures[4] = new Picture(path1 + "/BlueButt.png");
+        buttPictures[5] = new Picture(path1 + "/IndigoButt.png");
+        buttPictures[6] = new Picture(path1 + "/VioletButt.png");
         //********************************************************************************************************************************************************
 
         for (int i = 0; i < 7; i++) {
@@ -106,21 +110,21 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         buttBackAnim.resizeImage(5);
         buttons[7].setIcon(buttBackAnim);
 
-        buttAnimPictures[0] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/RedButtAnim.png");
-        buttAnimPictures[1] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/OrangeButtAnim.png");
-        buttAnimPictures[2] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/YellowButtAnim.png");
-        buttAnimPictures[3] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/GreenButtAnim.png");
-        buttAnimPictures[4] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/BlueButtAnim.png");
-        buttAnimPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButtAnim.png");
-        buttAnimPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButtAnim.png");
+//        buttAnimPictures[0] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/RedButtAnim.png");
+//        buttAnimPictures[1] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/OrangeButtAnim.png");
+//        buttAnimPictures[2] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/YellowButtAnim.png");
+//        buttAnimPictures[3] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/GreenButtAnim.png");
+//        buttAnimPictures[4] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/BlueButtAnim.png");
+//        buttAnimPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButtAnim.png");
+//        buttAnimPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButtAnim.png");
         //********************************************************************************************************************************************************
-//        buttAnimPictures[0] = new Picture("RedButtAnim.png");
-//        buttAnimPictures[1] = new Picture("OrangeButtAnim.png");
-//        buttAnimPictures[2] = new Picture("YellowButtAnim.png");
-//        buttAnimPictures[3] = new Picture("GreenButtAnim.png");
-//        buttAnimPictures[4] = new Picture("BlueButtAnim.png");
-//        buttAnimPictures[5] = new Picture("IndigoButtAnim.png");
-//        buttAnimPictures[6] = new Picture("VioletButtAnim.png");
+        buttAnimPictures[0] = new Picture(path1 + "/RedButtAnim.png");
+        buttAnimPictures[1] = new Picture(path1 + "/OrangeButtAnim.png");
+        buttAnimPictures[2] = new Picture(path1 + "/YellowButtAnim.png");
+        buttAnimPictures[3] = new Picture(path1 + "/GreenButtAnim.png");
+        buttAnimPictures[4] = new Picture(path1 + "/BlueButtAnim.png");
+        buttAnimPictures[5] = new Picture(path1 + "/IndigoButtAnim.png");
+        buttAnimPictures[6] = new Picture(path1 + "/VioletButtAnim.png");
         //********************************************************************************************************************************************************
 
         for (int i = 0; i < 7; i++) {

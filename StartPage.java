@@ -3,6 +3,8 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class StartPage extends JFrame implements ActionListener, MouseListener {
 
@@ -58,16 +60,16 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private int time = 120;
 
     // DESIGN
-    private Picture picLogo = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-2.png");
-    private Picture backPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
-    private Picture startButtAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-4.png");
-    private Picture buttonBorder = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-5.png");
-    private Picture startButt1 = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-6.png");
-    private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
-    private Picture picTimeUp = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-8.png");
-    private Picture picTimeUpAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-9.png");
-    private Picture picTimeDown = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-10.png");
-    private Picture picTimeDownAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-11.png");
+//    private Picture picLogo = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-2.png");
+//    private Picture backPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
+//    private Picture startButtAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-4.png");
+//    private Picture buttonBorder = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-5.png");
+//    private Picture startButt1 = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-6.png");
+//    private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
+//    private Picture picTimeUp = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-8.png");
+//    private Picture picTimeUpAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-9.png");
+//    private Picture picTimeDown = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-10.png");
+//    private Picture picTimeDownAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-11.png");
 
     private JLabel labelLogo = new JLabel();
     private JLabel labelBack = new JLabel();
@@ -75,17 +77,20 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private JLabel labelStart1 = new JLabel();
     private JLabel labelStart2 = new JLabel();
 
+
+    public static Path path1 = Paths.get("src/com/company");
+
     //********************************************************************************************************************************************************
-//    private Picture picLogo = new Picture("Untitled-2.png");
-//    private Picture backLogo = new Picture("Untitled-3.png");
-//    private Picture startButtAnim = new Picture("Untitled-4.png");
-//    private Picture buttonBorder = new Picture("Untitled-5.png");
-//    private Picture startButt1 = new Picture("Untitled-6.png");
-//    private Picture startPic = new Picture("Untitled-7.png");
-//    private Picture picTimeUp = new Picture("Untitled-8.png");
-//    private Picture picTimeUpAnim = new Picture("Untitled-9.png");
-//    private Picture picTimeDown = new Picture("Untitled-10.png");
-//    private Picture picTimeDownAnim = new Picture("Untitled-11.png");
+    private Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/Untitled-2.png");
+    private Picture backPic = new Picture(path1.toAbsolutePath().toString() + "/Untitled-3.png");
+    private Picture startButtAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-4.png");
+    private Picture buttonBorder = new Picture(path1.toAbsolutePath().toString() + "/Untitled-5.png");
+    private Picture startButt1 = new Picture(path1.toAbsolutePath().toString() + "/Untitled-6.png");
+    private Picture startPic = new Picture(path1.toAbsolutePath().toString() + "/Untitled-7.png");
+    private Picture picTimeUp = new Picture(path1.toAbsolutePath().toString() + "/Untitled-8.png");
+    private Picture picTimeUpAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-9.png");
+    private Picture picTimeDown = new Picture(path1.toAbsolutePath().toString() + "/Untitled-10.png");
+    private Picture picTimeDownAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-11.png");
     //********************************************************************************************************************************************************
 
 
@@ -115,6 +120,8 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         panel.setLayout(null);
         panel.setBounds(0, 0, 500, 500);
         panel.setBackground(new Color(69, 69, 69));
+
+        System.out.println(path1.toAbsolutePath());
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // LENGTH OF COLOUR CHOICE SETUP

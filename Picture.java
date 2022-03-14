@@ -3,9 +3,9 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
-import java.awt.geom.*;
 import javax.imageio.*;
 import java.io.*;
+import java.nio.file.Path;
 
 /**
  * This class represents a graphical picture. Once an instance of this is created, it can

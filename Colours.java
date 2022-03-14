@@ -16,13 +16,13 @@ public class Colours {
 //        colours[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Indigo.png");
 //        colours[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Violet.png");
 
-        colours[0] = new Picture(path1 + "/Red.png");
-        colours[1] = new Picture(path1 + "/Orange.png");
-        colours[2] = new Picture(path1 + "/Yellow.png");
-        colours[3] = new Picture(path1 + "/Green.png");
-        colours[4] = new Picture(path1 + "/Blue.png");
-        colours[5] = new Picture(path1 + "/Indigo.png");
-        colours[6] = new Picture(path1 + "/Violet.png");
+        colours[0] = new Picture(path1.toAbsolutePath().toString() + "/Red.png");
+        colours[1] = new Picture(path1.toAbsolutePath().toString() + "/Orange.png");
+        colours[2] = new Picture(path1.toAbsolutePath().toString() + "/Yellow.png");
+        colours[3] = new Picture(path1.toAbsolutePath().toString() + "/Green.png");
+        colours[4] = new Picture(path1.toAbsolutePath().toString() + "/Blue.png");
+        colours[5] = new Picture(path1.toAbsolutePath().toString() + "/Indigo.png");
+        colours[6] = new Picture(path1.toAbsolutePath().toString() + "/Violet.png");
 
         for (int i = 0; i < colours.length; i++) {
             colours[i].resizeImage(5);

@@ -6,6 +6,8 @@ import java.awt.event.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static com.company.Main.convertToTime;
+
 public class StartPage extends JFrame implements ActionListener, MouseListener {
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -32,11 +34,11 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
 
 
     // COLORS FOR THE BUTTONS (DIFFICULTY)
-    private Color color4 = new Color(152, 222, 124);
-    private Color color5 = new Color(245, 241, 137);
-    private Color color6 = new Color(255, 167, 84);
-    private Color color7 = new Color(255, 114, 92);
-    private Color color8 = new Color(228, 130, 255);
+    public static Color color4 = new Color(152, 222, 124);
+    public static Color color5 = new Color(245, 241, 137);
+    public static Color color6 = new Color(255, 167, 84);
+    public static Color color7 = new Color(255, 114, 92);
+    public static Color color8 = new Color(228, 130, 255);
 
     // CODE COLOUR LENGTH CHOICE BUTTONS
     private JButton button4 = new JButton("4");
@@ -79,9 +81,10 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
 
 
     public static Path path1 = Paths.get("src/com/company");
+    //public static Path path1 = Paths.get("");
 
     //********************************************************************************************************************************************************
-    private Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/Untitled-2.png");
+    public static Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/Untitled-2.png");
     private Picture backPic = new Picture(path1.toAbsolutePath().toString() + "/Untitled-3.png");
     private Picture startButtAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-4.png");
     private Picture buttonBorder = new Picture(path1.toAbsolutePath().toString() + "/Untitled-5.png");
@@ -351,19 +354,19 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             case 10: label2.setText("legendary"); label2.setForeground(color8); break;
         }
     }
-
-    private String convertToTime(int num) {
-        StringBuilder s = new StringBuilder("");
-        int o = 0;
-        int p = 0;
-        p = num % 60;
-        o = num / 60;
-        s.append(Integer.toString(o));
-        s.append(":");
-        if (p<10) s.append("0");
-        s.append(Integer.toString(p));
-        return s.toString();
-    }
+//
+//    private String convertToTime(int num) {
+//        StringBuilder s = new StringBuilder("");
+//        int o = 0;
+//        int p = 0;
+//        p = num % 60;
+//        o = num / 60;
+//        s.append(Integer.toString(o));
+//        s.append(":");
+//        if (p<10) s.append("0");
+//        s.append(Integer.toString(p));
+//        return s.toString();
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -435,14 +438,14 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             if (time >= 45) {
                 time -= 15;
             }
-            labelTime.setText(convertToTime(time));
+            labelTime.setText(convertToTime(time, ":"));
         }
 
         if (e.getSource() == buttonTimeUp) {
             if (time <= 285) {
                 time += 15;
             }
-            labelTime.setText(convertToTime(time));
+            labelTime.setText(convertToTime(time, ":"));
         }
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -454,8 +457,8 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             // OPEN NEW FRAME FOR THE GAME
             int diff1 = Integer.valueOf(getDiffButtonEnabled(button4, button5, button6, button7, button8).getText());
             int diff2 = Integer.valueOf(getDiffButtonEnabled(button14, button15, button16, button17, button18).getText());
-            if (!buttonLimit.isEnabled()) time = 0;
-            new GamePage(diff1, diff2, time);
+            if (!labelTime.isVisible()) new GamePage(diff1, diff2, 0);
+            else new GamePage(diff1, diff2, time);
             this.dispose();
         }
 

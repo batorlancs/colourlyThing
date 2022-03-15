@@ -24,6 +24,8 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     private JPanel panel2 = new JPanel();
     private JPanel panelBot = new JPanel();
     private JPanel buttonPanelBot = new JPanel();
+    private JPanel resultPanel = new JPanel();
+    private JLabel[] resultLabels;
     private JButton[] buttons = new JButton[8];
     private JLabel labelBot = new JLabel();
     private MyLabel[] label1;
@@ -39,7 +41,9 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     private int[] random;
     private int seconds;
     private JLabel labelTimer = new JLabel();
-    private JButton buttonRestart = new JButton("restart");
+    private JButton buttonRestart = new JButton();
+    private JButton buttonHome = new JButton();
+    private boolean endOfGame;
 
     // PICTURES
     private Picture[] buttPictures = new Picture[7];
@@ -58,6 +62,11 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     private Picture picDoubleCheck = new Picture(path1.toAbsolutePath().toString() + "/DoubleCheck.png");
     private Picture picCheck = new Picture(path1.toAbsolutePath().toString() + "/Check.png");
     private Picture picFailCheck = new Picture(path1.toAbsolutePath().toString() + "/failCheck.png");
+    private Picture picRestart = new Picture(path1.toAbsolutePath().toString() + "/Restart.png");
+    private Picture picRestartAnim = new Picture(path1.toAbsolutePath().toString() + "/RestartAnim.png");
+    private Picture picHome = new Picture(path1.toAbsolutePath().toString() + "/ButtHome.png");
+    private Picture picHomeAnim = new Picture(path1.toAbsolutePath().toString() + "/ButtHomeAnim.png");
+
     //********************************************************************************************************************************************************
 
 
@@ -74,6 +83,7 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         // GAMEPLAY
         w = diff1;
         h = diff2;
+        endOfGame = false;
         originalTime = time;
         random = new int[w];
         randomize = new Random();
@@ -84,17 +94,30 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         
 
         // TOP PANEL
+        picHome.resizeImage(5);
+        picHomeAnim.resizeImage(5);
+        buttonHome.setBounds(diff1*120 - 28 , 40, 75, 75);
+        buttonHome.setOpaque(false);
+        buttonHome.addActionListener(this);
+        buttonHome.addMouseListener(this);
+        buttonHome.setContentAreaFilled(false);
+        buttonHome.setBorderPainted(false);
+//        buttonHome.setFont(font1);
+//        buttonHome.setForeground(plainTextColor);
+        buttonHome.setIcon(picHome);
         
-        buttonRestart.setBounds(10, 65, 100, 50);
+        picRestart.resizeImage(5);
+        picRestartAnim.resizeImage(5);
+        buttonRestart.setBounds(14, 40, 75, 75);
         buttonRestart.setOpaque(false);
         buttonRestart.addActionListener(this);
         buttonRestart.addMouseListener(this);
-        buttonRestart.setOpaque(false);
         buttonRestart.setContentAreaFilled(false);
         buttonRestart.setBorderPainted(false);
-        buttonRestart.setFont(font1);
-        buttonRestart.setForeground(plainTextColorAnim2);
-        buttonRestart.setHorizontalAlignment(JLabel.CENTER);
+        //buttonRestart.setFont(font1);
+        //buttonRestart.setForeground(plainTextColorAnim2);
+        //buttonRestart.setHorizontalAlignment(JLabel.CENTER);
+        buttonRestart.setIcon(picRestart);
 
         labelTimer.setBounds(60*diff1-20, 90, 100, 50);
         labelTimer.setForeground(plainTextColorAnim2);
@@ -106,17 +129,17 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                if (time != 0) {
+                if (seconds < 0) labelTimer.setText("0 : 00");
+                else labelTimer.setText(convertToTime(seconds, " : "));
+                if (time != 0 && seconds >= 0 && !endOfGame) {
                     seconds--;
-                } else {
+                } else if (seconds < 3600 && time == 0 && !endOfGame){
                     seconds++;
                 }
-                labelTimer.setText(convertToTime(seconds, " : "));
-                System.out.println(seconds);
+                if (seconds < 0 || seconds >= 3600) endGame(false);
             }
         };
-        timer.scheduleAtFixedRate(task, 1000, 1000);
-
+        timer.scheduleAtFixedRate(task, 0, 1000);
 
         labelTop2.setBounds(60*diff1-120, 20, 400, 105);
         picLogo2.resizeImage(14);
@@ -126,6 +149,7 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         panelTop.setBackground(backGroundColor);
         panelTop.setLayout(null);
         panelTop.add(buttonRestart);
+        panelTop.add(buttonHome);
         panelTop.add(labelTimer);
         panelTop.add(labelTop2);
 
@@ -200,6 +224,19 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 
         }
 
+        //////////////////////////////////////////////////////////////////////////////////
+        resultPanel.setBounds(26, 0, w*60, 60);
+        resultPanel.setBackground(backGroundColor);
+        resultPanel.setLayout(new GridLayout(1, w));
+        resultLabels = new JLabel[w];
+        for (int i = 0; i < w; i++) {
+            resultLabels[i] = new JLabel();
+            resultLabels[i].setIcon(colours.getColourImage(random[i]));
+            resultPanel.add(resultLabels[i]);
+        }
+        //////////////////////////////////////////////////////////////////////////////////
+        panelBot.add(resultPanel);
+        resultPanel.setVisible(false);
         panelBot.add(buttonPanelBot);
 
         // PANEL 1
@@ -299,21 +336,51 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
                     break;
             }
         }
+        if (hasWon(results)) endGame(true);
+    }
+
+    private boolean hasWon(int[] arr) {
+        for (int num: arr) {
+            if (num != 2) return false;
+        }
+        return true;
     }
 
     private void restartGame() {
+        endOfGame = false;
+        resultPanel.setVisible(false);
+        buttonPanelBot.setVisible(true);
         seconds = originalTime;
-
+        for (int i = 0; i < buttons.length-1; i++) {
+            buttons[i].setEnabled(true);
+            buttons[i].setVisible(true);
+            buttons[i].setIcon(buttAnimPictures[i]);
+        }
+        buttons[7].setEnabled(true);
+        buttons[7].setVisible(true);
+        buttons[7].setIcon(buttBackAnim);
         for (int i = 0; i < w*h; i++) {
             label1[i].setIcon(picEmpty);
             label2[i].setIcon(picEmpty);
         }
         for (int i = 0; i < w; i++) {
             random[i] = randomize.nextInt(7);
+            resultLabels[i].setIcon(colours.getColourImage(random[i]));
         }
         label1[0].setIcon(brushes.getBasicBrush());
         displayArray(random);
         pointer = 0;
+    }
+
+    private void endGame(boolean won) {
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i].setEnabled(false);
+            buttons[i].setVisible(false);
+        }
+        endOfGame = true;
+        if (!won)
+            resultPanel.setVisible(true);
+        buttonPanelBot.setVisible(false);
     }
 
     @Override
@@ -326,10 +393,11 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
                 if (pointer % w == 0) {
                     putChecks(pointer / w - 1);
                 }
-                if (pointer == w * h) {
-                    // END GAME
+                if (pointer >= w * h) {
+                    endGame(false);
+                } else {
+                    label1[pointer].setIcon(brushes.getBrush(i));
                 }
-                label1[pointer].setIcon(brushes.getBrush(i));
             }
         }
         if (e.getSource() == buttons[7] && pointer % w != 0) {
@@ -340,6 +408,10 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         }
         if (e.getSource() == buttonRestart) {
             restartGame();
+        }
+        if (e.getSource() == buttonHome) {
+            new StartPage();
+            this.dispose();
         }
     }
 
@@ -362,27 +434,44 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        for (int i = 0; i < 7; i++) {
-            if (e.getSource() == buttons[i]) {
-                buttons[i].setIcon(buttPictures[i]);
-                label1[pointer].setIcon(brushes.getBrush(i));
+
+        if (!endOfGame) {
+            for (int i = 0; i < 7; i++) {
+                if (e.getSource() == buttons[i]) {
+                    buttons[i].setIcon(buttPictures[i]);
+                    label1[pointer].setIcon(brushes.getBrush(i));
+                }
+            }
+            if (e.getSource() == buttons[7]) {
+                buttons[7].setIcon(buttBack);
             }
         }
-        if (e.getSource() == buttons[7]) {
-            buttons[7].setIcon(buttBack);
+        if (e.getSource() == buttonRestart) {
+            buttonRestart.setIcon(picRestartAnim);
+        }
+        if (e.getSource() == buttonHome) {
+            buttonHome.setIcon(picHomeAnim);
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        for (int i = 0; i < 7; i++) {
-            if (e.getSource() == buttons[i]) {
-                buttons[i].setIcon(buttAnimPictures[i]);
-                label1[pointer].setIcon(brushes.getBasicBrush());
+        if (!endOfGame) {
+            for (int i = 0; i < 7; i++) {
+                if (e.getSource() == buttons[i]) {
+                    buttons[i].setIcon(buttAnimPictures[i]);
+                    label1[pointer].setIcon(brushes.getBasicBrush());
+                }
+            }
+            if (e.getSource() == buttons[7]) {
+                buttons[7].setIcon(buttBackAnim);
             }
         }
-        if (e.getSource() == buttons[7]) {
-            buttons[7].setIcon(buttBackAnim);
+        if (e.getSource() == buttonRestart) {
+            buttonRestart.setIcon(picRestart);
+        }
+        if (e.getSource() == buttonHome) {
+            buttonHome.setIcon(picHome);
         }
     }
 

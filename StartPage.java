@@ -84,7 +84,7 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     //public static Path path1 = Paths.get("");
 
     //********************************************************************************************************************************************************
-    public static Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/Untitled-2.png");
+    private Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/Untitled-2.png");
     private Picture backPic = new Picture(path1.toAbsolutePath().toString() + "/Untitled-3.png");
     private Picture startButtAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-4.png");
     private Picture buttonBorder = new Picture(path1.toAbsolutePath().toString() + "/Untitled-5.png");
@@ -354,19 +354,6 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             case 10: label2.setText("legendary"); label2.setForeground(color8); break;
         }
     }
-//
-//    private String convertToTime(int num) {
-//        StringBuilder s = new StringBuilder("");
-//        int o = 0;
-//        int p = 0;
-//        p = num % 60;
-//        o = num / 60;
-//        s.append(Integer.toString(o));
-//        s.append(":");
-//        if (p<10) s.append("0");
-//        s.append(Integer.toString(p));
-//        return s.toString();
-//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

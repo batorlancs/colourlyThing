@@ -1,10 +1,7 @@
 package com.company;
 
 public class Main {
-
-    public static StartPage startPage;
-
-
+    
     public static String convertToTime(int num, String format) {
         StringBuilder s = new StringBuilder("");
         int o = 0;
@@ -19,7 +16,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        startPage = new StartPage();
-
+        new StartPage();
     }
 }

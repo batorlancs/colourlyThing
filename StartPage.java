@@ -80,20 +80,20 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private JLabel labelStart2 = new JLabel();
 
 
-    public static Path path1 = Paths.get("src/com/company");
-    //public static Path path1 = Paths.get("");
+    public static Path path1 = Paths.get("src/image");
+    //public static Path path1 = Paths.get("/image");
 
     //********************************************************************************************************************************************************
-    private Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/Untitled-2.png");
-    private Picture backPic = new Picture(path1.toAbsolutePath().toString() + "/Untitled-3.png");
-    private Picture startButtAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-4.png");
-    private Picture buttonBorder = new Picture(path1.toAbsolutePath().toString() + "/Untitled-5.png");
-    private Picture startButt1 = new Picture(path1.toAbsolutePath().toString() + "/Untitled-6.png");
-    private Picture startPic = new Picture(path1.toAbsolutePath().toString() + "/Untitled-7.png");
-    private Picture picTimeUp = new Picture(path1.toAbsolutePath().toString() + "/Untitled-8.png");
-    private Picture picTimeUpAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-9.png");
-    private Picture picTimeDown = new Picture(path1.toAbsolutePath().toString() + "/Untitled-10.png");
-    private Picture picTimeDownAnim = new Picture(path1.toAbsolutePath().toString() + "/Untitled-11.png");
+    private Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-2.png");
+    private Picture backPic = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-3.png");
+    private Picture startButtAnim = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-4.png");
+    private Picture buttonBorder = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-5.png");
+    private Picture startButt1 = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-6.png");
+    private Picture startPic = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-7.png");
+    private Picture picTimeUp = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-8.png");
+    private Picture picTimeUpAnim = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-9.png");
+    private Picture picTimeDown = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-10.png");
+    private Picture picTimeDownAnim = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-11.png");
     //********************************************************************************************************************************************************
 
 

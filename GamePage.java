@@ -54,18 +54,18 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 //    private Picture buttBack = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButt.png");
 //    private Picture buttBackAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButtAnim.png");
     //********************************************************************************************************************************************************
-    private Picture picLogo2 = new Picture(path1.toAbsolutePath().toString() + "/Untitled-2.png");
-    private Picture picBackGround = new Picture(path1.toAbsolutePath().toString() + "/Untitled-3.png");
-    private Picture picEmpty = new Picture(path1.toAbsolutePath().toString() + "/Empty.png");
-    private Picture buttBack = new Picture(path1.toAbsolutePath().toString() + "/backButt.png");
-    private Picture buttBackAnim = new Picture(path1.toAbsolutePath().toString() + "/backButtAnim.png");
-    private Picture picDoubleCheck = new Picture(path1.toAbsolutePath().toString() + "/DoubleCheck.png");
-    private Picture picCheck = new Picture(path1.toAbsolutePath().toString() + "/Check.png");
-    private Picture picFailCheck = new Picture(path1.toAbsolutePath().toString() + "/failCheck.png");
-    private Picture picRestart = new Picture(path1.toAbsolutePath().toString() + "/Restart.png");
-    private Picture picRestartAnim = new Picture(path1.toAbsolutePath().toString() + "/RestartAnim.png");
-    private Picture picHome = new Picture(path1.toAbsolutePath().toString() + "/ButtHome.png");
-    private Picture picHomeAnim = new Picture(path1.toAbsolutePath().toString() + "/ButtHomeAnim.png");
+    private Picture picLogo2 = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-2.png");
+    private Picture picBackGround = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-3.png");
+    private Picture picEmpty = new Picture(path1.toAbsolutePath().toString() + "/gamepage/Empty.png");
+    private Picture buttBack = new Picture(path1.toAbsolutePath().toString() + "/gamepage/backButt.png");
+    private Picture buttBackAnim = new Picture(path1.toAbsolutePath().toString() + "/gamepage/backButtAnim.png");
+    private Picture picDoubleCheck = new Picture(path1.toAbsolutePath().toString() + "/gamepage/DoubleCheck.png");
+    private Picture picCheck = new Picture(path1.toAbsolutePath().toString() + "/gamepage/Check.png");
+    private Picture picFailCheck = new Picture(path1.toAbsolutePath().toString() + "/gamepage/failCheck.png");
+    private Picture picRestart = new Picture(path1.toAbsolutePath().toString() + "/gamepage/Restart.png");
+    private Picture picRestartAnim = new Picture(path1.toAbsolutePath().toString() + "/gamepage/RestartAnim.png");
+    private Picture picHome = new Picture(path1.toAbsolutePath().toString() + "/gamepage/ButtHome.png");
+    private Picture picHomeAnim = new Picture(path1.toAbsolutePath().toString() + "/gamepage/ButtHomeAnim.png");
 
     //********************************************************************************************************************************************************
 
@@ -187,13 +187,13 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 //        buttPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButt.png");
 //        buttPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButt.png");
         //********************************************************************************************************************************************************
-        buttPictures[0] = new Picture(path1.toAbsolutePath().toString() + "/RedButt.png");
-        buttPictures[1] = new Picture(path1.toAbsolutePath().toString() + "/OrangeButt.png");
-        buttPictures[2] = new Picture(path1.toAbsolutePath().toString() + "/YellowButt.png");
-        buttPictures[3] = new Picture(path1.toAbsolutePath().toString() + "/GreenButt.png");
-        buttPictures[4] = new Picture(path1.toAbsolutePath().toString() + "/BlueButt.png");
-        buttPictures[5] = new Picture(path1.toAbsolutePath().toString() + "/IndigoButt.png");
-        buttPictures[6] = new Picture(path1.toAbsolutePath().toString() + "/VioletButt.png");
+        buttPictures[0] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/RedButt.png");
+        buttPictures[1] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/OrangeButt.png");
+        buttPictures[2] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/YellowButt.png");
+        buttPictures[3] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/GreenButt.png");
+        buttPictures[4] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/BlueButt.png");
+        buttPictures[5] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/IndigoButt.png");
+        buttPictures[6] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/VioletButt.png");
         //********************************************************************************************************************************************************
 
         for (int i = 0; i < 7; i++) {
@@ -212,13 +212,13 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 //        buttAnimPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButtAnim.png");
 //        buttAnimPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButtAnim.png");
         //********************************************************************************************************************************************************
-        buttAnimPictures[0] = new Picture(path1.toAbsolutePath().toString() + "/RedButtAnim.png");
-        buttAnimPictures[1] = new Picture(path1.toAbsolutePath().toString() + "/OrangeButtAnim.png");
-        buttAnimPictures[2] = new Picture(path1.toAbsolutePath().toString() + "/YellowButtAnim.png");
-        buttAnimPictures[3] = new Picture(path1.toAbsolutePath().toString() + "/GreenButtAnim.png");
-        buttAnimPictures[4] = new Picture(path1.toAbsolutePath().toString() + "/BlueButtAnim.png");
-        buttAnimPictures[5] = new Picture(path1.toAbsolutePath().toString() + "/IndigoButtAnim.png");
-        buttAnimPictures[6] = new Picture(path1.toAbsolutePath().toString() + "/VioletButtAnim.png");
+        buttAnimPictures[0] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/RedButtAnim.png");
+        buttAnimPictures[1] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/OrangeButtAnim.png");
+        buttAnimPictures[2] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/YellowButtAnim.png");
+        buttAnimPictures[3] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/GreenButtAnim.png");
+        buttAnimPictures[4] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/BlueButtAnim.png");
+        buttAnimPictures[5] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/IndigoButtAnim.png");
+        buttAnimPictures[6] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/VioletButtAnim.png");
         //********************************************************************************************************************************************************
 
         for (int i = 0; i < 7; i++) {

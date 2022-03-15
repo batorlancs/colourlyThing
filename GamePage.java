@@ -136,7 +136,10 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
                 } else if (seconds < 3600 && time == 0 && !endOfGame){
                     seconds++;
                 }
-                if (seconds < 0 || seconds >= 3600) endGame(false);
+                if (seconds < 0 || seconds >= 3600) {
+                    label1[pointer].setIcon(picEmpty);
+                    endGame(false);
+                }
             }
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
@@ -393,9 +396,9 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
                 if (pointer % w == 0) {
                     putChecks(pointer / w - 1);
                 }
-                if (pointer >= w * h) {
+                if (pointer >= w * h && !endOfGame) {
                     endGame(false);
-                } else {
+                } else if (!endOfGame) {
                     label1[pointer].setIcon(brushes.getBrush(i));
                 }
             }

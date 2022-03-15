@@ -66,7 +66,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     private Picture picRestartAnim = new Picture(path1.toAbsolutePath().toString() + "/gamepage/RestartAnim.png");
     private Picture picHome = new Picture(path1.toAbsolutePath().toString() + "/gamepage/ButtHome.png");
     private Picture picHomeAnim = new Picture(path1.toAbsolutePath().toString() + "/gamepage/ButtHomeAnim.png");
-
     //********************************************************************************************************************************************************
 
 
@@ -311,13 +310,25 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 
     private void putChecks(int row) {
         int[] results = new int[w];
+        int[] numColours = new int[7];
+        int[] numColours2 = new int[7];
+
+        for (int i = 0; i < 7; i++) numColours[i] = 0;
+        for (int i = 0; i < 7; i++) numColours2[i] = 0;
+        for (int i = 0; i < random.length; i++) numColours[random[i]]++;
+
         for (int i = 0; i < w; i++) {
             if (label1[row*w + i].getId() == random[i]) {
+                numColours2[random[i]]++;
                 results[i] = 2;
-            } else if (isInRow(label1[row*w + i].getId())) {
-                results[i] = 1;
-            } else {
+            }  else {
                 results[i] = 0;
+            }
+        }
+        for (int i = 0; i < w; i++) {
+            if (isInRow(label1[row*w + i].getId()) && numColours2[label1[row*w + i].getId()] < numColours[label1[row*w + i].getId()] && results[i] != 2) {
+                numColours2[label1[row*w + i].getId()]++;
+                results[i] = 1;
             }
         }
         System.out.println("---------------------------------");

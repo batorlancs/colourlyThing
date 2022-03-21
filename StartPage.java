@@ -62,17 +62,6 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private int time = 120;
 
     // DESIGN
-//    private Picture picLogo = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-2.png");
-//    private Picture backPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
-//    private Picture startButtAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-4.png");
-//    private Picture buttonBorder = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-5.png");
-//    private Picture startButt1 = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-6.png");
-//    private Picture startPic = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-7.png");
-//    private Picture picTimeUp = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-8.png");
-//    private Picture picTimeUpAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-9.png");
-//    private Picture picTimeDown = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-10.png");
-//    private Picture picTimeDownAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-11.png");
-
     private JLabel labelLogo = new JLabel();
     private JLabel labelBack = new JLabel();
     private JButton buttonStart = new JButton();
@@ -122,6 +111,7 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     /////////////////////////////////////////////////////////////////////////////////////
     private void initComponents() {
         // FRAME SETUP
+        this.pack();
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);

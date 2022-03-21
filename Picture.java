@@ -43,7 +43,7 @@ public class Picture extends ImageIcon
         return filename;
     }
 
-    // RESIZING IMAGE TO THE GIVEN PERCENT
+    // RESIZING IMAGE TO A GIVEN PERCENT
     public void resizeImage(int percent) {
         try {
             Image helper = this.getImage();

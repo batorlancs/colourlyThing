@@ -44,15 +44,15 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     private JButton buttonRestart = new JButton();
     private JButton buttonHome = new JButton();
     private boolean endOfGame;
+    private boolean isGameMode1;
+    private JLabel labelWin = new JLabel();
+    private JLabel labelLost = new JLabel();
 
     // PICTURES
     private Picture[] buttPictures = new Picture[7];
     private Picture[] buttAnimPictures = new Picture[7];
+
     //********************************************************************************************************************************************************
-//    private Picture picEmpty = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Empty.png");
-//    private Picture picBackGround = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/Untitled-3.png");
-//    private Picture buttBack = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButt.png");
-//    private Picture buttBackAnim = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/backButtAnim.png");
     //********************************************************************************************************************************************************
     private Picture picLogo2 = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-2.png");
     private Picture picBackGround = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-3.png");
@@ -66,10 +66,12 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     private Picture picRestartAnim = new Picture(path1.toAbsolutePath().toString() + "/gamepage/RestartAnim.png");
     private Picture picHome = new Picture(path1.toAbsolutePath().toString() + "/gamepage/ButtHome.png");
     private Picture picHomeAnim = new Picture(path1.toAbsolutePath().toString() + "/gamepage/ButtHomeAnim.png");
+    private Picture youWin = new Picture(path1.toAbsolutePath().toString() + "/gamepage/youWin.png");
+    private Picture youLost = new Picture(path1.toAbsolutePath().toString() + "/gamepage/youLost.png");
     //********************************************************************************************************************************************************
 
 
-    public GamePage(int diff1, int diff2, int time) {
+    public GamePage(int diff1, int diff2, int time, boolean isMode1) {
         this.setSize(120*diff1+60, 60*diff2+280); //148
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,6 +84,7 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         // GAMEPLAY
         w = diff1;
         h = diff2;
+        isGameMode1 = isMode1;
         endOfGame = false;
         originalTime = time;
         random = new int[w];
@@ -89,8 +92,11 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         for (int i = 0; i < w; i++) {
             random[i] = randomize.nextInt(7);
         }
+        System.out.print("//------------------------//\n         ");
         displayArray(random);
-        
+        System.out.println("//------------------------//");
+
+
 
         // TOP PANEL
         picHome.resizeImage(5);
@@ -101,8 +107,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         buttonHome.addMouseListener(this);
         buttonHome.setContentAreaFilled(false);
         buttonHome.setBorderPainted(false);
-//        buttonHome.setFont(font1);
-//        buttonHome.setForeground(plainTextColor);
         buttonHome.setIcon(picHome);
         
         picRestart.resizeImage(5);
@@ -113,9 +117,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         buttonRestart.addMouseListener(this);
         buttonRestart.setContentAreaFilled(false);
         buttonRestart.setBorderPainted(false);
-        //buttonRestart.setFont(font1);
-        //buttonRestart.setForeground(plainTextColorAnim2);
-        //buttonRestart.setHorizontalAlignment(JLabel.CENTER);
         buttonRestart.setIcon(picRestart);
 
         labelTimer.setBounds(60*diff1-20, 90, 100, 50);
@@ -158,7 +159,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         // BOTTOM PANEL
         panelBot.setBounds(0, 60*diff2+160, 120*diff1+60, 150);
         labelBot.setBounds(0, 0, 120*diff1+60, 60);
-        //labelBot.setIcon(picBackGround);
         panelBot.add(labelBot);
         panelBot.setBackground(backGroundColor);
         panelBot.setLayout(null);
@@ -166,6 +166,7 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         buttonPanelBot.setBounds(40+(diff1-4)*60, 0, 460, 60);
         buttonPanelBot.setLayout(new GridLayout(1, 8, 0, 0));
         buttonPanelBot.setBackground(backGroundColor);
+
         // BUTTONS ON BOTTOM PANEL
         for (int i = 0; i<8; i++) {
             buttons[i] = new JButton();
@@ -178,13 +179,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
             buttonPanelBot.add(buttons[i]);
         }
 
-//        buttPictures[0] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/RedButt.png");
-//        buttPictures[1] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/OrangeButt.png");
-//        buttPictures[2] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/YellowButt.png");
-//        buttPictures[3] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/GreenButt.png");
-//        buttPictures[4] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/BlueButt.png");
-//        buttPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButt.png");
-//        buttPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButt.png");
         //********************************************************************************************************************************************************
         buttPictures[0] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/RedButt.png");
         buttPictures[1] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/OrangeButt.png");
@@ -203,13 +197,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         buttBackAnim.resizeImage(5);
         buttons[7].setIcon(buttBackAnim);
 
-//        buttAnimPictures[0] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/RedButtAnim.png");
-//        buttAnimPictures[1] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/OrangeButtAnim.png");
-//        buttAnimPictures[2] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/YellowButtAnim.png");
-//        buttAnimPictures[3] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/GreenButtAnim.png");
-//        buttAnimPictures[4] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/BlueButtAnim.png");
-//        buttAnimPictures[5] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/IndigoButtAnim.png");
-//        buttAnimPictures[6] = new Picture("/Users/camohinthisb1/IdeaProjects/colourlyThing/src/com/company/VioletButtAnim.png");
         //********************************************************************************************************************************************************
         buttAnimPictures[0] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/RedButtAnim.png");
         buttAnimPictures[1] = new Picture(path1.toAbsolutePath().toString() + "/gamepage/OrangeButtAnim.png");
@@ -226,6 +213,15 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 
         }
 
+        youWin.resizeImage(8);
+        youLost.resizeImage(8);
+        labelWin.setBounds(120, 0, 300, 65);
+        labelWin.setHorizontalAlignment(JLabel.CENTER);
+        labelWin.setIcon(youWin);
+        labelLost.setBounds(310, 0, 200, 65);
+        labelLost.setIcon(youLost);
+        labelWin.setVisible(false);
+        labelLost.setVisible(false);
         //////////////////////////////////////////////////////////////////////////////////
         resultPanel.setBounds(26, 0, w*60, 60);
         resultPanel.setBackground(backGroundColor);
@@ -237,6 +233,8 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
             resultPanel.add(resultLabels[i]);
         }
         //////////////////////////////////////////////////////////////////////////////////
+        panelBot.add(labelWin);
+        panelBot.add(labelLost);
         panelBot.add(resultPanel);
         resultPanel.setVisible(false);
         panelBot.add(buttonPanelBot);
@@ -333,9 +331,12 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         }
         System.out.println("---------------------------------");
         displayArray(results);
-        //Arrays.sort(results);
-        //results = reverseArray(results);
-        displayArray(results);
+        // ---------------------------------------------------------------------------------------------------
+        if (isGameMode1) {
+            Arrays.sort(results);
+            results = reverseArray(results);
+        }
+        // ---------------------------------------------------------------------------------------------------
 
         for (int i = 0; i < w; i++) {
             switch (results[i]) {
@@ -375,6 +376,7 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         buttons[7].setIcon(buttBackAnim);
         for (int i = 0; i < w*h; i++) {
             label1[i].setIcon(picEmpty);
+            label1[i].changeID(-1);
             label2[i].setIcon(picEmpty);
         }
         for (int i = 0; i < w; i++) {
@@ -382,8 +384,12 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
             resultLabels[i].setIcon(colours.getColourImage(random[i]));
         }
         label1[0].setIcon(brushes.getBasicBrush());
+        System.out.print("//------------------------//\n        ");
         displayArray(random);
+        System.out.println("//------------------------//");
         pointer = 0;
+        labelLost.setVisible(false);
+        labelWin.setVisible(false);
     }
 
     private void endGame(boolean won) {
@@ -392,8 +398,12 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
             buttons[i].setVisible(false);
         }
         endOfGame = true;
-        if (!won)
+        if (!won) {
             resultPanel.setVisible(true);
+            labelLost.setVisible(true);
+        } else {
+            labelWin.setVisible(true);
+        }
         buttonPanelBot.setVisible(false);
     }
 

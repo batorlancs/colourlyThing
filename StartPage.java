@@ -78,6 +78,11 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private JButton buttonStart = new JButton();
     private JLabel labelStart1 = new JLabel();
     private JLabel labelStart2 = new JLabel();
+    private JButton buttonMode = new JButton();
+    private JButton buttonHelp = new JButton();
+    private boolean isMode1;
+    private JLabel labelHelp = new JLabel();
+    private JButton buttonHelpPage = new JButton();
 
 
     public static Path path1 = Paths.get("src/image");
@@ -94,6 +99,13 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private Picture picTimeUpAnim = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-9.png");
     private Picture picTimeDown = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-10.png");
     private Picture picTimeDownAnim = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-11.png");
+    private Picture gameMode1 = new Picture(path1.toAbsolutePath().toString() + "/startpage/gamemode1.png");
+    private Picture gameMode2 = new Picture(path1.toAbsolutePath().toString() + "/startpage/gamemode2.png");
+    private Picture gameModeAnim = new Picture(path1.toAbsolutePath().toString() + "/startpage/gamemodeanim.png");
+    private Picture help = new Picture(path1.toAbsolutePath().toString() + "/startpage/help.png");
+    private Picture helpanim = new Picture(path1.toAbsolutePath().toString() + "/startpage/helpanim.png");
+    private Picture helpPage = new Picture(path1.toAbsolutePath().toString() + "/startpage/helpPage.png");
+    private Picture helpPageAnim = new Picture(path1.toAbsolutePath().toString() + "/startpage/helpPageAnim.png");
     //********************************************************************************************************************************************************
 
 
@@ -122,7 +134,8 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         // PANEL SETUP
         panel.setLayout(null);
         panel.setBounds(0, 0, 500, 500);
-        panel.setBackground(new Color(69, 69, 69));
+        //panel.setBackground(new Color(69, 69, 69));
+        panel.setBackground(backGroundColor);
 
         System.out.println(path1.toAbsolutePath());
 
@@ -252,7 +265,52 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         labelStart1.setVisible(false);
         labelStart2.setVisible(false);
 
+        // GANE MODE SWITCH
+        isMode1 = true;
+        gameMode1.resizeImage(7);
+        gameMode2.resizeImage(7);
+        gameModeAnim.resizeImage(6);
+        buttonMode.setIcon(gameModeAnim);
+        buttonMode.setBounds(15, 370, 100, 100);
+        buttonMode.addActionListener(this);
+        buttonMode.addMouseListener(this);
+        buttonMode.setOpaque(false);
+        buttonMode.setContentAreaFilled(false);
+        buttonMode.setBorderPainted(false);
+        
+        // HELP BUTTON
+        help.resizeImage(6);
+        helpanim.resizeImage(7);
+        buttonHelp.setIcon(help);
+        buttonHelp.setBounds(385, 370, 100, 100);
+        buttonHelp.addActionListener(this);
+        buttonHelp.addMouseListener(this);
+        buttonHelp.setOpaque(false);
+        buttonHelp.setContentAreaFilled(false);
+        buttonHelp.setBorderPainted(false);
 
+        // HELP PAGE
+        helpPage.resizeImage(94);
+        helpPageAnim.resizeImage(94);
+        labelHelp.setBounds(0, 0, 500, 500);
+        labelHelp.setHorizontalAlignment(JLabel.CENTER);
+        labelHelp.setVerticalAlignment(JLabel.NORTH);
+        labelHelp.setIcon(helpPageAnim);
+        labelHelp.setBackground(backGroundColor);
+        labelHelp.setVisible(false);
+        
+        buttonHelpPage.setBounds(25, 400, 450, 100);
+        buttonHelpPage.addActionListener(this);
+        buttonHelpPage.addMouseListener(this);
+        buttonHelpPage.setOpaque(false);
+        buttonHelpPage.setContentAreaFilled(false);
+        buttonHelpPage.setBorderPainted(false);
+        buttonHelpPage.setFont(font1);
+        buttonHelpPage.setText("CLICK HERE TO RETURN TO MAIN MENU");
+        buttonHelpPage.setForeground(plainTextColor);
+        buttonHelpPage.setHorizontalAlignment(JButton.CENTER);
+        buttonHelpPage.setVisible(false);
+        buttonHelpPage.setEnabled(false);
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         // ADDING TO PANEL
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -261,7 +319,11 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
         panel.add(label3);
         panel.add(labelLogo);
         panel.add(labelTime);
+        panel.add(buttonMode);
+        panel.add(buttonHelp);
         panel.add(buttonLimit);
+        panel.add(labelHelp);
+        panel.add(buttonHelpPage);
         panel.add(buttonTimeDown);
         panel.add(buttonTimeUp);
         panel.add(button4); panel.add(button5); panel.add(button6); panel.add(button7); panel.add(button8);
@@ -290,6 +352,16 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     /////////////////////////////////////////////////////////////////////////////////////
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // MAKE EVERYTHING INVIDIBLE IN THE PANEL
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    private void setAllVisible(boolean x) {
+        for (Component a: panel.getComponents()) {
+            a.setVisible(x);
+            a.setEnabled(x);
+        }
+    }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //  HELPS TO CREATE BUTTON
@@ -444,9 +516,31 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             // OPEN NEW FRAME FOR THE GAME
             int diff1 = Integer.valueOf(getDiffButtonEnabled(button4, button5, button6, button7, button8).getText());
             int diff2 = Integer.valueOf(getDiffButtonEnabled(button14, button15, button16, button17, button18).getText());
-            if (!labelTime.isVisible()) new GamePage(diff1, diff2, 0);
-            else new GamePage(diff1, diff2, time);
+            if (!labelTime.isVisible()) new GamePage(diff1, diff2, 0, isMode1);
+            else new GamePage(diff1, diff2, time, isMode1);
             this.dispose();
+        }
+
+        if (e.getSource() == buttonMode) {
+            isMode1 = !isMode1;
+            if (isMode1) buttonMode.setIcon(gameMode1);
+            else buttonMode.setIcon(gameMode2);
+        }
+
+        if (e.getSource() == buttonHelp) {
+            setAllVisible(false);
+            buttonHelpPage.setVisible(true);
+            buttonHelpPage.setEnabled(true);
+            labelHelp.setVisible(true);
+            labelHelp.setEnabled(true);
+        }
+
+        if (e.getSource() == buttonHelpPage) {
+            setAllVisible(true);
+            buttonHelpPage.setEnabled(false);
+            buttonHelpPage.setVisible(false);
+            labelHelp.setVisible(false);
+            labelHelp.setEnabled(false);
         }
 
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -507,7 +601,15 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             button17.setForeground(plainTextColorAnim);
         if (e.getSource() == button18 && button18.getForeground() == plainTextColor)
             button18.setForeground(plainTextColorAnim);
-        
+
+        if (e.getSource() == buttonMode) {
+            if (isMode1) buttonMode.setIcon(gameMode1);
+            else buttonMode.setIcon(gameMode2);
+        }
+
+        if (e.getSource() == buttonHelp) buttonHelp.setIcon(helpanim);
+
+        if (e.getSource() == buttonHelpPage) labelHelp.setIcon(helpPage);
     }
 
     @Override
@@ -551,5 +653,12 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
             button17.setForeground(plainTextColor);
         if (e.getSource() == button18 && button18.getForeground() == plainTextColorAnim)
             button18.setForeground(plainTextColor);
+
+        if (e.getSource() == buttonMode) buttonMode.setIcon(gameModeAnim);
+
+        if (e.getSource() == buttonHelp) buttonHelp.setIcon(help);
+
+        if (e.getSource() == buttonHelpPage) labelHelp.setIcon(helpPageAnim);
+
     }
 }

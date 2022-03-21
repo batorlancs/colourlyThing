@@ -215,10 +215,10 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
 
         youWin.resizeImage(8);
         youLost.resizeImage(8);
-        labelWin.setBounds(120, 0, 300, 65);
+        labelWin.setBounds(w*60-120, 0, 300, 65);
         labelWin.setHorizontalAlignment(JLabel.CENTER);
         labelWin.setIcon(youWin);
-        labelLost.setBounds(310, 0, 200, 65);
+        labelLost.setBounds(w*60 + 50, 0, 200, 65);
         labelLost.setIcon(youLost);
         labelWin.setVisible(false);
         labelLost.setVisible(false);

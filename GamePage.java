@@ -86,7 +86,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
     //-------------------------------------------------------------------------------------------------------------------------------------------------------
     public GamePage(int diff1, int diff2, int time, boolean isMode1) {
         // FRAME SETUP
-        this.pack();
         this.setSize(120*diff1+60, 60*diff2+280); //148
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,7 +93,6 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         this.setTitle("colourly");
         this.setResizable(false);
         this.getContentPane().setBackground(backGroundColor);
-        this.setVisible(true);
 
         //-------------------------------------------------------------------------------------------------------------------------------------------------------
         // GAMEPLAY MANAGMENT
@@ -316,7 +314,7 @@ public class GamePage extends JFrame implements ActionListener, MouseListener{
         this.add(panelBot);
         this.add(panel1);
         this.add(panel2);
-
+        this.setVisible(true);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------

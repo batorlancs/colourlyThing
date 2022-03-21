@@ -74,8 +74,8 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     private JButton buttonHelpPage = new JButton();
 
 
-    public static Path path1 = Paths.get("src/image");
-    //public static Path path1 = Paths.get("/image");
+    //public static Path path1 = Paths.get("src/image");
+    public static Path path1 = Paths.get("image");
 
     //********************************************************************************************************************************************************
     private Picture picLogo = new Picture(path1.toAbsolutePath().toString() + "/startpage/Untitled-2.png");
@@ -111,20 +111,18 @@ public class StartPage extends JFrame implements ActionListener, MouseListener {
     /////////////////////////////////////////////////////////////////////////////////////
     private void initComponents() {
         // FRAME SETUP
-        this.pack();
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
         this.setTitle("colourly");
         this.setResizable(false);
-        this.getContentPane().setBackground(new Color(69, 69, 69));
+        this.getContentPane().setBackground(new Color(64, 64, 64));
         this.add(panel);
 
         // PANEL SETUP
         panel.setLayout(null);
         panel.setBounds(0, 0, 500, 500);
-        //panel.setBackground(new Color(69, 69, 69));
         panel.setBackground(backGroundColor);
 
         System.out.println(path1.toAbsolutePath());
